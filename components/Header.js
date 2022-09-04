@@ -61,7 +61,7 @@ const Header = () => {
           alt=""
         />
         <p className="hidden xl:inline-flex font-semibold text-sm whitespace-nowrap p-3 max-w-xs">
-          Shabbir
+          Muhammad
         </p>
         <CgMenuGridO
           size={20}
