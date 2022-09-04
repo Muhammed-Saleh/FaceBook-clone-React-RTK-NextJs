@@ -3,7 +3,15 @@ import React from "react";
 import Sidebaritem from "./Sidebaritem";
 
 import Image from "next/image";
+
 import { ImUsers } from "react-icons/im";
+import {
+  MdGroups,
+  MdOutlineOndemandVideo,
+  MdOutlineExpandMore,
+} from "react-icons/md";
+import { AiOutlineShop } from "react-icons/ai";
+import { BsStopwatch } from "react-icons/bs";
 
 const Sidebar = () => {
   return (
@@ -18,7 +26,12 @@ const Sidebar = () => {
         />
         <p className="hidden sm:inline-flex font-medium">Muhammad</p>
       </div>
-      <Sidebaritem Icon={ImUsers} value="Users" />
+      <Sidebaritem Icon={ImUsers} value="Frineds" />
+      <Sidebaritem Icon={MdGroups} value="Groups" />
+      <Sidebaritem Icon={AiOutlineShop} value="Marketplace" />
+      <Sidebaritem Icon={MdOutlineOndemandVideo} value="Watch" />
+      <Sidebaritem Icon={BsStopwatch} value="Memories" />
+      <Sidebaritem Icon={MdOutlineExpandMore} value="See More" />
     </div>
   );
 };
