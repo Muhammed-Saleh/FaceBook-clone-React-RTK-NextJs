@@ -9,7 +9,10 @@ import { AiFillMessage, AiFillBell, AiOutlineShop } from "react-icons/ai";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { CgMenuGridO } from "react-icons/cg";
 
+import { signOut, useSession } from "next-auth/react";
+
 const Header = () => {
+  const { data: session } = useSession();
   return (
     <div className="bg-white flex items-center p-2 shadow-md top-0 sticky z-50 h-16">
       <div className="flex min-w-fit">
@@ -55,13 +58,15 @@ const Header = () => {
       </div>
       <div className="flex items-center space-x-2 justify-end min-w-fit">
         <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png"
+          src={session?.user.image}
+          onClick={signOut}
           height={40}
           width={40}
-          alt=""
+          alt="user-img"
+          className="rounded-full cursor-pointer"
         />
         <p className="hidden xl:inline-flex font-semibold text-sm whitespace-nowrap p-3 max-w-xs">
-          Muhammad
+          {session?.user.name.split(" ")[0]}
         </p>
         <CgMenuGridO
           size={20}
