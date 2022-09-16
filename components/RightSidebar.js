@@ -32,12 +32,12 @@ const RightSidebar = () => {
         status="Online"
       />
       <Contacts
-        src="https://images.pexels.com/photos/886285/pexels-photo-886285.jpeg?auto=compress&cs=tinysrgb&w=400"
+        src="https://images.pexels.com/photos/3845457/pexels-photo-3845457.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
         name="Ibrahim"
         status="Offline"
       />
       <Contacts
-        src="https://images.pexels.com/photos/3845457/pexels-photo-3845457.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+        src="https://images.pexels.com/photos/886285/pexels-photo-886285.jpeg?auto=compress&cs=tinysrgb&w=400"
         name="Hussien"
         status="Online"
       />
