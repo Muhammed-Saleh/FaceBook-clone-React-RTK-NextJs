@@ -8,8 +8,10 @@ import { HiOutlineVideoCamera } from "react-icons/hi";
 import { IoMdPhotos } from "react-icons/io";
 import { BsEmojiSmile } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import axios from "axios";
 
 const CreatePost = () => {
+  const FACEBOOK_CLONE_ENDPOINT = "";
   const { data: session } = useSession();
   const inputRef = useRef(null);
   const hiddenFileInput = useRef(null);
@@ -34,7 +36,27 @@ const CreatePost = () => {
     setImageToPost(null);
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputRef.current.value) return;
+    const formData = new FormData();
+
+    formData.append("file", imageToPost);
+    formData.append("post", inputRef.current.value);
+    formData.append("name", session?.user.name);
+    formData.append("email", session?.user.email);
+    formData.append("profilePic", session?.user.image);
+
+    axios
+      .post(FACEBOOK_CLONE_ENDPOINT, formData, {
+        headers: { Accept: "application/json" },
+      })
+      .then((response) => {
+        inputRef.current.value = "";
+        removeImage();
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="bg-white rounded-md shadow-md text-gray-500 p-2">
@@ -53,7 +75,9 @@ const CreatePost = () => {
             ref={inputRef}
             placeholder={`What's on your mind, ${session?.user.name}?`}
           ></input>
-          <button hidden>Submit</button>
+          <button hidden onClick={handleSubmit}>
+            Submit
+          </button>
         </form>
       </div>
       {imageToPost && (
